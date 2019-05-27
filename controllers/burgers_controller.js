@@ -14,13 +14,17 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
+    // console.log(res);
     burger.newBurger(req.body.burgerName, function(result) {
         res.json({id: result.insertId});
     });
 });
 
 router.put("/api/burgers/:id", function(req, res) {
-    burger.updateBurger(req.params.id, function(result) {
+    console.log(req.params.id);
+    var condition = {"id": parseInt(req.params.id)};
+    console.log(condition);
+    burger.updateBurger(condition, function(result) {
         if (result.changedRows === 0) {
             return res.status(404).end();
         }

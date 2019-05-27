@@ -13,8 +13,8 @@ const orm = {
             cb(result);
         });
     },
-    updateOne: function(tableName, colName, newValue, theID, cb) {
-        connection.query("UPDATE ?? SET ?? WHERE ?;", [tableName, {[colName]: newValue}, {id: theID}], function(err, result) {
+    updateOne: function(tableName, change, condition, cb) {
+        connection.query("UPDATE ?? SET ? WHERE ?;", [tableName, change, condition], function(err, result) {
             if (err) throw err;
             cb(result);
         });
@@ -22,3 +22,4 @@ const orm = {
 }
 
 module.exports = orm;
+// next rung: burger.js

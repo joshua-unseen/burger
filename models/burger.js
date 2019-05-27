@@ -11,11 +11,13 @@ const burger = {
             cb(res);
         });
     },
-    updateBurger: function(burgerID, cb) {
-        orm.updateOne("burgers", "devoured", true, burgerID, function(res) {
+    updateBurger: function(condition, cb) {
+        var change = {"devoured": true};
+        orm.updateOne("burgers", change, condition, function(res) {
             cb(res);
         });
     }
 }
 
 module.exports = burger;
+// next rung: burgers_controller.js
