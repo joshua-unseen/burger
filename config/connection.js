@@ -1,5 +1,4 @@
 const mysql = require("mysql");
-require("dotenv").config();
 
 var connection;
 
@@ -7,11 +6,12 @@ if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 }
 else {
+  const keys = require("./keys"); // Pointless to do this now, but I'm trying to get in the habit.
   connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
-    user: process.env.LCL_USR,
-    password: process.env.LCL_PASS,
+    user: keys.localUser,
+    password: keys.localPass,
     database: "burgers_db"
   });
 }
