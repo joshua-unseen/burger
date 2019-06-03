@@ -1,4 +1,5 @@
-$(function () {
+$(function () { // On load...
+    // Eat button click handler
     $(".eat-it").on("click", function (event) {
         var id = $(this).data("id");
         $.ajax("/api/burgers/" + id,
@@ -9,6 +10,7 @@ $(function () {
             });
     });
 
+    // New burger form handler
     $("#add-burger").on("submit", function (event) {
         event.preventDefault();
         var newBurger = $("input[name='burger-name']").val().trim();

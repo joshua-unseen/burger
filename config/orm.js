@@ -1,5 +1,5 @@
 const connection = require("./connection");
-
+// Here's all the SQL queries
 const orm = {
     selectAll: function(tableName, cb) {
         connection.query("SELECT * FROM ??;", [tableName], function(err, result) {
